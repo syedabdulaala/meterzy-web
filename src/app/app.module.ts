@@ -24,11 +24,18 @@ import { AppComponent } from './app.component';
 import { MainLayoutComponent } from './shared/layout/main-layout/main-layout.component';
 import { SimpleLayoutComponent } from './shared/layout/simple-layout/simple-layout.component';
 import { ConfirmDialogComponent } from './shared/dialogs/confirm-dialog/confirm-dialog.component';
+import { TariffsComponent } from './pages/tariffs/tariffs.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: MainLayoutComponent
+    component: MainLayoutComponent,
+    children: [
+      {
+        path: 'tariffs',
+        component: TariffsComponent
+      }
+    ]
   },
   {
     path: '',
@@ -62,6 +69,7 @@ const routes: Routes = [
     SimpleLayoutComponent,
     MainLayoutComponent,
     ConfirmDialogComponent,
+    TariffsComponent
   ],
   entryComponents: [ConfirmDialogComponent],
   bootstrap: [AppComponent]
