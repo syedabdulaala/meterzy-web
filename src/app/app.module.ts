@@ -20,19 +20,29 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+import { AuthGuard } from './core/guard/auth.guard';
+
 import { AppComponent } from './app.component';
 import { MainLayoutComponent } from './shared/layout/main-layout/main-layout.component';
 import { SimpleLayoutComponent } from './shared/layout/simple-layout/simple-layout.component';
+import { AuthComponent } from './pages/auth/auth.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: MainLayoutComponent
+    component: MainLayoutComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '',
-    component: SimpleLayoutComponent
+    component: SimpleLayoutComponent,
+    children: [
+      {
+        path: 'auth',
+        component: AuthComponent
+      }
+    ]
   }
 ];
 
@@ -60,8 +70,10 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     SimpleLayoutComponent,
-    MainLayoutComponent
+    MainLayoutComponent,
+    AuthComponent
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [AuthGuard]
 })
 export class AppModule {}
