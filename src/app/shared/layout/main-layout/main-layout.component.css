@@ -1,0 +1,16 @@
+.occupy-screen-height {
+  height: 91.5vh !important;
+}
+
+.occupy-screen-width {
+  width: 100vw !important;
+}
+
+.app-name {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.toolbar-buttons button {
+  margin-right: 5px;
+}

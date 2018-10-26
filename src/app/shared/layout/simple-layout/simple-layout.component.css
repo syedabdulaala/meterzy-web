@@ -1,0 +1,7 @@
+.occupy-screen-height {
+  height: 100vh !important;
+}
+
+.occupy-screen-width {
+  width: 99vw !important;
+}
