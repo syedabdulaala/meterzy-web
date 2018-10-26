@@ -23,7 +23,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AppComponent } from './app.component';
 import { MainLayoutComponent } from './shared/layout/main-layout/main-layout.component';
 import { SimpleLayoutComponent } from './shared/layout/simple-layout/simple-layout.component';
-
+import { ConfirmDialogComponent } from './shared/dialogs/confirm-dialog/confirm-dialog.component';
 
 const routes: Routes = [
   {
@@ -60,8 +60,10 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     SimpleLayoutComponent,
-    MainLayoutComponent
+    MainLayoutComponent,
+    ConfirmDialogComponent,
   ],
+  entryComponents: [ConfirmDialogComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
