@@ -24,11 +24,18 @@ import { AppComponent } from './app.component';
 import { MainLayoutComponent } from './shared/layout/main-layout/main-layout.component';
 import { SimpleLayoutComponent } from './shared/layout/simple-layout/simple-layout.component';
 import { ConfirmDialogComponent } from './shared/dialogs/confirm-dialog/confirm-dialog.component';
+import { MetersComponent } from './pages/meters/meters.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: MainLayoutComponent
+    component: MainLayoutComponent,
+    children: [
+      {
+        path: 'meters',
+        component: MetersComponent
+      }
+    ]
   },
   {
     path: '',
@@ -62,6 +69,7 @@ const routes: Routes = [
     SimpleLayoutComponent,
     MainLayoutComponent,
     ConfirmDialogComponent,
+    MetersComponent
   ],
   entryComponents: [ConfirmDialogComponent],
   bootstrap: [AppComponent]
