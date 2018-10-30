@@ -27,12 +27,19 @@ import { MainLayoutComponent } from './shared/layout/main-layout/main-layout.com
 import { SimpleLayoutComponent } from './shared/layout/simple-layout/simple-layout.component';
 import { ConfirmDialogComponent } from './shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { AuthComponent } from './pages/auth/auth.component';
+import { TariffsComponent } from './pages/tariffs/tariffs.component';
 
 const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
     canActivate: [AuthGuard]
+    children: [
+      {
+        path: 'tariffs',
+        component: TariffsComponent
+      }
+    ]
   },
   {
     path: '',
@@ -73,6 +80,7 @@ const routes: Routes = [
     MainLayoutComponent,
     ConfirmDialogComponent,
     AuthComponent
+    TariffsComponent
   ],
   bootstrap: [AppComponent],
   providers: [AuthGuard],

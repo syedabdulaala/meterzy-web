@@ -1,0 +1,105 @@
+<div class="container-fluid fill-parent">
+  <div class="row fill-parent">
+    <div class="col-sm-10 col-md-6 col-lg-6 col-xl-6">
+      <mat-card class="fill-parent v-scroll">
+        <div class="row">
+          <div class="col">
+            <mat-card-title *ngIf="tariff.id === null">NEW TARIFF</mat-card-title>
+            <mat-card-title *ngIf="tariff.id > 0">UPDATE TARIFF</mat-card-title>
+          </div>
+          <div class="col">
+            <button mat-icon-button class="pull-right" (click)="newTariff()">
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+        </div>
+        <mat-card-content>
+          <form class="form">
+            <mat-form-field class="form-field">
+              <input matInput [(value)]="tariff.name" type="text" placeholder="Name">
+            </mat-form-field>
+            <mat-form-field class="form-field">
+              <mat-select placeholder="Strategy">
+                <mat-option [value]="1">Top to bottom</mat-option>
+                <mat-option [value]="2">Bottom to top</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-tab-group #tabTariffs mat-stretch-tabs>
+              <mat-tab label="Fixed">
+                <div *ngFor="let fixedTariff of tariff.fixedTariffs; let i = index" class="dyn-form">
+                  <mat-form-field class="form-field">
+                    <input matInput [(value)]="fixedTariff.name" type="text" placeholder="Name">
+                  </mat-form-field>
+                  <mat-form-field class="form-field">
+                    <input matInput [(value)]="fixedTariff.charges" type="text" placeholder="Charges">
+                  </mat-form-field>
+                  <mat-form-field class="form-field">
+                    <mat-select placeholder="Unit Type">
+                      <mat-option>None</mat-option>
+                      <mat-option [value]="1">Raw</mat-option>
+                      <mat-option [value]="2">Percent</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <button *ngIf="tariff.fixedTariffs.length !== 1" mat-button (click)="removeTariff(tabTariffs._selectedIndex, i)"
+                    class="pull-right">Remove</button>
+                </div>
+              </mat-tab>
+              <mat-tab label="Ranged">
+                <div *ngFor="let rangedTariff of tariff.rangedTariffs; let i = index" class="dyn-form">
+                  <mat-form-field class="form-field">
+                    <input matInput [(value)]="rangedTariff.name" type="text" placeholder="Name">
+                  </mat-form-field>
+                  <mat-form-field class="form-field">
+                    <input matInput [(value)]="rangedTariff.lowerLimit" type="text" placeholder="Lower Limit">
+                  </mat-form-field>
+                  <mat-form-field class="form-field">
+                    <input matInput [(value)]="rangedTariff.upperLimit" type="text" placeholder="Upper Limit">
+                  </mat-form-field>
+                  <mat-form-field class="form-field">
+                    <input matInput [(value)]="rangedTariff.charges" type="text" placeholder="Charges">
+                  </mat-form-field>
+                  <mat-form-field class="form-field">
+                    <mat-select placeholder="Unit Type">
+                      <mat-option>None</mat-option>
+                      <mat-option [value]="1">Raw</mat-option>
+                      <mat-option [value]="2">Percent</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <button *ngIf="tariff.rangedTariffs.length !== 1" mat-button (click)="removeTariff(tabTariffs._selectedIndex, i)"
+                    class="pull-right">Remove</button>
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+          </form>
+        </mat-card-content>
+        <mat-card-actions class="two-button">
+          <button mat-flat-button color="primary" (click)="addNewTariff(tabTariffs._selectedIndex)">ADD NEW</button>
+          <button *ngIf="tariff.id === null" mat-flat-button color="primary" class="pull-right">SAVE</button>
+          <button *ngIf="tariff.id !== null" mat-flat-button color="primary" class="pull-right">UPDATE</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div class="col-sm-10 col-md-6 col-lg-6 col-xl-6">
+      <mat-card class="fill-parent v-scroll">
+        <mat-card-title>TARIFFS</mat-card-title>
+        <mat-card-content>
+          <div class="row">
+            <div *ngFor="let tariff of tariffs" class="col-sm-6 col-md-6 col-lg-4 col-xl-4 data-item">
+              <mat-card>
+                <mat-card-header>
+                  <mat-card-title>{{ tariff.name }}</mat-card-title>
+                  <mat-card-subtitle>Total ranged: {{ tariff.rangedTariffs.length }}</mat-card-subtitle>
+                  <mat-card-subtitle>Total fixed: {{ tariff.fixedTariffs.length }}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-actions class="two-button">
+                  <button mat-flat-button color="primary" (click)="editTariff(tariff.id)">EDIT</button>
+                  <button mat-flat-button color="primary" (click)="deleteTariff(tariff.id)" class="pull-right">DELETE</button>
+                </mat-card-actions>
+              </mat-card>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
