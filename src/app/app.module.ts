@@ -28,6 +28,7 @@ import { SimpleLayoutComponent } from './shared/layout/simple-layout/simple-layo
 import { ConfirmDialogComponent } from './shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { TariffsComponent } from './pages/tariffs/tariffs.component';
+import { MetersComponent } from './pages/meters/meters.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,10 @@ const routes: Routes = [
       {
         path: 'tariffs',
         component: TariffsComponent
+      },
+      {
+        path: 'meters',
+        component: MetersComponent
       }
     ]
   },
@@ -79,8 +84,10 @@ const routes: Routes = [
     SimpleLayoutComponent,
     MainLayoutComponent,
     ConfirmDialogComponent,
-    AuthComponent
-    TariffsComponent
+    AuthComponent,
+    TariffsComponent,
+    MetersComponent
+
   ],
   bootstrap: [AppComponent],
   providers: [AuthGuard],

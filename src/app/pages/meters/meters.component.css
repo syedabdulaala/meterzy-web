@@ -1,0 +1,7 @@
+.two-button button {
+    min-width: 45%;
+}
+
+.one-button button {
+    min-width: 100%;
+}
