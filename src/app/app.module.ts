@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Routes } from '@angular/router';
 
+import { MatNativeDateModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -19,6 +20,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { AuthGuard } from './core/guard/auth.guard';
 
@@ -29,12 +31,13 @@ import { ConfirmDialogComponent } from './shared/dialogs/confirm-dialog/confirm-
 import { AuthComponent } from './pages/auth/auth.component';
 import { TariffsComponent } from './pages/tariffs/tariffs.component';
 import { MetersComponent } from './pages/meters/meters.component';
+import { ReadingsComponent } from './pages/readings/readings.component';
 
 const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'tariffs',
@@ -43,6 +46,10 @@ const routes: Routes = [
       {
         path: 'meters',
         component: MetersComponent
+      },
+      {
+        path: 'readings',
+        component: ReadingsComponent
       }
     ]
   },
@@ -65,6 +72,7 @@ const routes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    MatNativeDateModule,
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
@@ -77,7 +85,8 @@ const routes: Routes = [
     MatDividerModule,
     MatSelectModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDatepickerModule
   ],
   declarations: [
     AppComponent,
@@ -86,8 +95,8 @@ const routes: Routes = [
     ConfirmDialogComponent,
     AuthComponent,
     TariffsComponent,
-    MetersComponent
-
+    MetersComponent,
+    ReadingsComponent
   ],
   bootstrap: [AppComponent],
   providers: [AuthGuard],
