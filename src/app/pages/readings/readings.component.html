@@ -1,0 +1,74 @@
+<div class="container-fluid fill-parent">
+  <div class="row fill-parent">
+    <div class="col-sm-10 col-md-6 col-lg-6 col-xl-6">
+      <mat-card class="fill-parent v-scroll">
+        <div class="row">
+          <div class="col">
+            <mat-card-title *ngIf="reading.id === null">NEW READING</mat-card-title>
+            <mat-card-title *ngIf="reading.id > 0">UPDATE READING</mat-card-title>
+          </div>
+          <div class="col">
+            <button mat-icon-button class="pull-right" (click)="newReading()">
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+        </div>
+        <mat-card-content>
+          <form class="form">
+            <mat-form-field class="form-field">
+              <input matInput [matDatepicker]="picker" [(value)]="reading.date" placeholder="Date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="form-field">
+              <input matInput [(value)]="reading.time" type="text" placeholder="Time">
+            </mat-form-field>
+            <mat-form-field class="form-field">
+              <input matInput [(value)]="reading.units" type="number" placeholder="Units">
+            </mat-form-field>
+            <mat-form-field class="form-field">
+              <mat-select placeholder="Meter" [(value)]="reading.meterId">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let meter of meters" [value]="meter.id">{{ meter.name }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </form>
+        </mat-card-content>
+        <mat-card-actions class="one-button">
+          <button *ngIf="reading.id === null" mat-flat-button color="primary" class="pull-right">SAVE</button>
+          <button *ngIf="reading.id !== null" mat-flat-button color="primary" class="pull-right">UPDATE</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div class="col-sm-10 col-md-6 col-lg-6 col-xl-6">
+      <mat-card class="fill-parent v-scroll">
+        <mat-card-title>READINGS</mat-card-title>
+        <mat-card-content>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="form-field">
+                <mat-select placeholder="Meter" [value]="meters[0]?.id" (selectionChange)="onMeterChanged($event.value)">
+                  <mat-option *ngFor="let meter of meters" [value]="meter.id">{{ meter.name }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div *ngFor="let reading of readings" class="col-sm-6 col-md-6 col-lg-4 col-xl-4 data-item">
+              <mat-card>
+                <mat-card-header>
+                  <mat-card-title>{{ reading.units }}</mat-card-title>
+                  <mat-card-subtitle>{{ reading.date.toDateString() }} {{ reading.time }}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-actions class="two-button">
+                  <button mat-flat-button color="primary" (click)="editReading(reading.id)">EDIT</button>
+                  <button mat-flat-button color="primary" (click)="deleteReading(reading.id)" class="pull-right">DELETE</button>
+                </mat-card-actions>
+              </mat-card>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
