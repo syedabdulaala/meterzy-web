@@ -3,14 +3,15 @@
     <mat-card>
       <mat-tab-group mat-stretch-tabs>
         <mat-tab label="LOGIN">
+          <app-loader #loginLoader ></app-loader>
           <form class="form">
             <mat-form-field class="form-field">
-              <input matInput type="email" placeholder="Email">
+              <input matInput type="email" placeholder="Email" name="login-email" [(ngModel)]="login.email">
             </mat-form-field>
             <mat-form-field class="form-field">
-              <input matInput type="password" placeholder="Password">
+              <input matInput type="password" placeholder="Password" name="login-password" [(ngModel)]="login.password">
             </mat-form-field>
-            <button mat-flat-button color="primary" class="pull-right">Login</button>
+            <button mat-flat-button color="primary" class="pull-right" (click)="onLogin()">Login</button>
           </form>
         </mat-tab>
         <mat-tab label="REGISTER">
