@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http'
 
 import { MatNativeDateModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
@@ -21,6 +22,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
 import { AuthGuard } from './core/guard/auth.guard';
 
@@ -32,6 +34,7 @@ import { AuthComponent } from './pages/auth/auth.component';
 import { TariffsComponent } from './pages/tariffs/tariffs.component';
 import { MetersComponent } from './pages/meters/meters.component';
 import { ReadingsComponent } from './pages/readings/readings.component';
+import { LoaderComponent } from './shared/loader/loader.component';
 
 const routes: Routes = [
   {
@@ -72,6 +75,7 @@ const routes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule,
     MatNativeDateModule,
     MatCardModule,
     MatInputModule,
@@ -86,7 +90,8 @@ const routes: Routes = [
     MatSelectModule,
     MatDialogModule,
     MatSnackBarModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatProgressSpinnerModule
   ],
   declarations: [
     AppComponent,
@@ -96,7 +101,8 @@ const routes: Routes = [
     AuthComponent,
     TariffsComponent,
     MetersComponent,
-    ReadingsComponent
+    ReadingsComponent,
+    LoaderComponent
   ],
   bootstrap: [AppComponent],
   providers: [AuthGuard],
