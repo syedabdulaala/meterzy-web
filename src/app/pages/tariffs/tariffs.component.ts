@@ -4,6 +4,8 @@ import { Helper } from 'src/app/shared/helper';
 import { ConfirmDialogComponent } from 'src/app/shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { config } from 'rxjs';
+import { BasePageComponent } from 'src/app/shared/components/base-page/base-page.component';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tariffs',
@@ -11,17 +13,13 @@ import { config } from 'rxjs';
   styleUrls: ['./tariffs.component.css'],
   host: { 'style': 'width: 100vw;' }
 })
-export class TariffsComponent implements OnInit {
-
-  dialog: MatDialog;
-  snackbar: MatSnackBar;
+export class TariffsComponent extends BasePageComponent implements OnInit {
 
   tariffs: Tariff[] = [];
   tariff: Tariff = new Tariff();
 
-  constructor(dialog: MatDialog, snackbar: MatSnackBar) {
-    this.dialog = dialog;
-    this.snackbar = snackbar;
+  constructor(router: Router, route: ActivatedRoute, dialog: MatDialog, snackbar: MatSnackBar) {
+    super(router, route, dialog, snackbar);
   }
 
   ngOnInit() {
@@ -61,7 +59,6 @@ export class TariffsComponent implements OnInit {
     console.log(this.tariffs);
   }
 
-  //EVENTS
   protected newTariff() {
     this.tariff = new Tariff();
     this.tariff.rangedTariffs.push(new RangedTariff());

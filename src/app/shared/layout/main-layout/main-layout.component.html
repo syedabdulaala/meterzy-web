@@ -1,38 +1,38 @@
 <mat-toolbar color="primary">
-    <div class="row">
-        <div class="col">
-            <button mat-icon-button [matMenuTriggerFor]="menu">
-                <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu">
-                <a routerLink="/dashboard">
-                    <button mat-menu-item>
-                        <mat-icon>bubble_chart</mat-icon>
-                        <span>Dashboard</span>
-                    </button>
-                </a>
-                <a routerLink="/meters">
-                    <button mat-menu-item>
-                        <mat-icon>bubble_chart</mat-icon>
-                        <span>Meters</span>
-                    </button>
-                </a>
-                <a routerLink="/tariffs">
-                    <button mat-menu-item>
-                        <mat-icon>bubble_chart</mat-icon>
-                        <span>Tariffs</span>
-                    </button>
-                </a>
-                <a routerLink="/readings">
-                    <button mat-menu-item>
-                        <mat-icon>bubble_chart</mat-icon>
-                        <span>Readings</span>
-                    </button>
-                </a>
-            </mat-menu>
-        </div>
+  <div class="row">
+    <div class="col">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <a routerLink="/dashboard">
+          <button mat-menu-item>
+            <mat-icon>bubble_chart</mat-icon>
+            <span>Dashboard</span>
+          </button>
+        </a>
+        <a routerLink="/meters">
+          <button mat-menu-item>
+            <mat-icon>bubble_chart</mat-icon>
+            <span>Meters</span>
+          </button>
+        </a>
+        <a routerLink="/tariffs">
+          <button mat-menu-item>
+            <mat-icon>bubble_chart</mat-icon>
+            <span>Tariffs</span>
+          </button>
+        </a>
+        <a routerLink="/readings">
+          <button mat-menu-item>
+            <mat-icon>bubble_chart</mat-icon>
+            <span>Readings</span>
+          </button>
+        </a>
+      </mat-menu>
     </div>
+  </div>
 </mat-toolbar>
 <div class="container-12 d-flex occupy-screen-height occupy-screen-width">
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </div>

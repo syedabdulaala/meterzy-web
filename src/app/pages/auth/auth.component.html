@@ -1,9 +1,9 @@
+<app-loader #appLoader></app-loader>
 <div class="row justify-content-center align-items-center fill-parent">
   <div class="col-md-8 col-lg-6 col-xl-4">
     <mat-card>
       <mat-tab-group mat-stretch-tabs>
         <mat-tab label="LOGIN">
-          <app-loader #loginLoader ></app-loader>
           <form class="form">
             <mat-form-field class="form-field">
               <input matInput type="email" placeholder="Email" name="login-email" [(ngModel)]="login.email">
@@ -17,18 +17,18 @@
         <mat-tab label="REGISTER">
           <form class="form">
             <mat-form-field class="form-field">
-              <input matInput type="text" placeholder="First Name">
+              <input matInput type="text" placeholder="First Name" name="register-first-name" [(ngModel)]="register.firstName">
             </mat-form-field>
             <mat-form-field class="form-field">
-              <input matInput type="text" placeholder="Last Name">
+              <input matInput type="text" placeholder="Last Name" name="register-last-name" [(ngModel)]="register.lastName">
             </mat-form-field>
             <mat-form-field class="form-field">
-              <input matInput type="email" placeholder="Email">
+              <input matInput type="email" placeholder="Email" name="register-email" [(ngModel)]="register.email">
             </mat-form-field>
             <mat-form-field class="form-field">
-              <input matInput type="password" placeholder="Password">
+              <input matInput type="password" placeholder="Password" name="register-password" [(ngModel)]="register.password">
             </mat-form-field>
-            <button mat-flat-button color="primary" class="pull-right">Register</button>
+            <button mat-flat-button color="primary" class="pull-right" (click)="onRegister()">Register</button>
           </form>
         </mat-tab>
       </mat-tab-group>

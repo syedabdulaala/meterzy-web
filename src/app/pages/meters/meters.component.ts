@@ -4,6 +4,8 @@ import { Helper } from 'src/app/shared/helper';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { ConfirmDialogComponent } from 'src/app/shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { SelectDataSource } from 'src/app/models/data-source.model';
+import { BasePageComponent } from 'src/app/shared/components/base-page/base-page.component';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-meters',
@@ -11,18 +13,14 @@ import { SelectDataSource } from 'src/app/models/data-source.model';
   styleUrls: ['./meters.component.css'],
   host: { 'style': 'width: 100vw;' }
 })
-export class MetersComponent implements OnInit {
-
-  dialog: MatDialog;
-  snackbar: MatSnackBar;
+export class MetersComponent extends BasePageComponent implements OnInit {
 
   meters: Meter[] = [];
   meter: Meter = new Meter();
   tariffs: SelectDataSource[] = [];
 
-  constructor(dialog: MatDialog, snackbar: MatSnackBar) {
-    this.dialog = dialog;
-    this.snackbar = snackbar;
+  constructor(router: Router, route: ActivatedRoute, dialog: MatDialog, snackbar: MatSnackBar) {
+    super(router, route, dialog, snackbar);
   }
 
   ngOnInit() {
@@ -54,7 +52,6 @@ export class MetersComponent implements OnInit {
   }
 
   protected editMeter(id: number) {
-    debugger;
     this.meter = this.meters.find(x => x.id == id);
   }
 
@@ -67,9 +64,5 @@ export class MetersComponent implements OnInit {
         this.snackbar.open('Deleted Successfully!', null, { duration: 2000 });
       }
     });
-  }
-
-  protected test() {
-    debugger;
   }
 }

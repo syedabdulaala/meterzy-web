@@ -34,7 +34,7 @@ import { AuthComponent } from './pages/auth/auth.component';
 import { TariffsComponent } from './pages/tariffs/tariffs.component';
 import { MetersComponent } from './pages/meters/meters.component';
 import { ReadingsComponent } from './pages/readings/readings.component';
-import { LoaderComponent } from './shared/loader/loader.component';
+import { LoaderComponent } from './shared/components/loader/loader.component';
 
 const routes: Routes = [
   {
@@ -102,7 +102,7 @@ const routes: Routes = [
     TariffsComponent,
     MetersComponent,
     ReadingsComponent,
-    LoaderComponent
+    LoaderComponent,
   ],
   bootstrap: [AppComponent],
   providers: [AuthGuard],

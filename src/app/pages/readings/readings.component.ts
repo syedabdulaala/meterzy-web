@@ -4,25 +4,23 @@ import { SelectDataSource } from 'src/app/models/data-source.model';
 import { Helper } from 'src/app/shared/helper';
 import { ConfirmDialogComponent } from 'src/app/shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { MatDialog, MatSnackBar } from '@angular/material';
+import { Router, ActivatedRoute } from '@angular/router';
+import { BasePageComponent } from 'src/app/shared/components/base-page/base-page.component';
 
 @Component({
   selector: 'app-readings',
   templateUrl: './readings.component.html',
   styleUrls: ['./readings.component.css']
 })
-export class ReadingsComponent implements OnInit {
-
-  dialog: MatDialog;
-  snackbar: MatSnackBar;
+export class ReadingsComponent extends BasePageComponent implements OnInit {
 
   readings: Reading[] = [];
   reading: Reading = new Reading();
   meters: SelectDataSource[] = [];
   selectedMeterId: number = 0;
 
-  constructor(dialog: MatDialog, snackbar: MatSnackBar) {
-    this.dialog = dialog;
-    this.snackbar = snackbar;
+  constructor(router: Router, route: ActivatedRoute, dialog: MatDialog, snackbar: MatSnackBar) {
+    super(router, route, dialog, snackbar);
   }
 
   ngOnInit() {
