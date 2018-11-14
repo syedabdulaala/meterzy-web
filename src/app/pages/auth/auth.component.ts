@@ -38,7 +38,7 @@ export class AuthComponent extends BasePageComponent implements OnInit {
     let result = await this.authService.login(this.login, this.onResponseError.bind(this));
     if (result) {
       let params = this.route.snapshot.queryParams;
-      if (params['returnUrl']) {
+      if (params['returnUrl'] && params['returnUrl'] !== '/') {
         this.router.navigate([params['returnUrl']]);
       } else {
         this.router.navigate(['/meters']);

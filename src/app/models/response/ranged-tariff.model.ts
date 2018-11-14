@@ -1,8 +1,8 @@
 export class RangedTariff {
     id: number = null;
     name: string = null;
-    upperLimit: number = null;
-    lowerLimit: number = null;
+    upperRange: number = null;
+    lowerRange: number = null;
     charges: number = null;
-    unitType: UnitType = null;
+    unitType: number = null;
 }

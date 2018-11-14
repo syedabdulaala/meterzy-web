@@ -66,7 +66,6 @@ export abstract class BaseService {
   }
 
   private handleFailedResponse(ex): BaseResponse {
-    debugger;
     if (ex.status === 401) {
       Helper.clearStorage();
       this.router.navigate(['/auth']);

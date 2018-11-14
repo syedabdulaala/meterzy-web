@@ -17,7 +17,7 @@
         <mat-card-content>
           <form class="form">
             <mat-form-field class="form-field">
-              <input matInput [(value)]="tariff.name" type="text" placeholder="Name">
+              <input matInput type="text" placeholder="Name" name="tariff-name" [(ngModel)]="tariff.name" >
             </mat-form-field>
             <mat-form-field class="form-field">
               <mat-select placeholder="Strategy">
@@ -29,13 +29,13 @@
               <mat-tab label="Fixed">
                 <div *ngFor="let fixedTariff of tariff.fixedTariffs; let i = index" class="dyn-form">
                   <mat-form-field class="form-field">
-                    <input matInput [(value)]="fixedTariff.name" type="text" placeholder="Name">
+                    <input matInput type="text" placeholder="Name" name="fixed-tariff-name-{{i}}" [(ngModel)]="fixedTariff.name">
                   </mat-form-field>
                   <mat-form-field class="form-field">
-                    <input matInput [(value)]="fixedTariff.charges" type="text" placeholder="Charges">
+                    <input matInput type="text" placeholder="Charges" name="fixed-tariff-charges-{{i}}" [(ngModel)]="fixedTariff.charges">
                   </mat-form-field>
                   <mat-form-field class="form-field">
-                    <mat-select placeholder="Unit Type">
+                    <mat-select placeholder="Unit Type" name="fixed-tariff-unit-type-{{i}}" [(ngModel)]="fixedTariff.unitType" >
                       <mat-option>None</mat-option>
                       <mat-option [value]="1">Raw</mat-option>
                       <mat-option [value]="2">Percent</mat-option>
@@ -48,19 +48,19 @@
               <mat-tab label="Ranged">
                 <div *ngFor="let rangedTariff of tariff.rangedTariffs; let i = index" class="dyn-form">
                   <mat-form-field class="form-field">
-                    <input matInput [(value)]="rangedTariff.name" type="text" placeholder="Name">
+                    <input matInput type="text" placeholder="Name" name="ranged-tariff-name-{{i}}" [(ngModel)]="rangedTariff.name">
                   </mat-form-field>
                   <mat-form-field class="form-field">
-                    <input matInput [(value)]="rangedTariff.lowerLimit" type="text" placeholder="Lower Limit">
+                    <input matInput type="text" placeholder="Lower Limit" name="ranged-tariff-lower-limit-{{i}}" [(ngModel)]="rangedTariff.lowerRange">
                   </mat-form-field>
                   <mat-form-field class="form-field">
-                    <input matInput [(value)]="rangedTariff.upperLimit" type="text" placeholder="Upper Limit">
+                    <input matInput type="text" placeholder="Upper Limit" name="ranged-tariff-upper-limit-{{i}}" [(ngModel)]="rangedTariff.upperRange" >
                   </mat-form-field>
                   <mat-form-field class="form-field">
-                    <input matInput [(value)]="rangedTariff.charges" type="text" placeholder="Charges">
+                    <input matInput type="text" placeholder="Charges" name="ranged-tariff-charges-{{i}}" [(ngModel)]="rangedTariff.charges">
                   </mat-form-field>
                   <mat-form-field class="form-field">
-                    <mat-select placeholder="Unit Type">
+                    <mat-select placeholder="Unit Type" name="ranged-tariff-unit-type-{{i}}" [(ngModel)]="rangedTariff.unitType">
                       <mat-option>None</mat-option>
                       <mat-option [value]="1">Raw</mat-option>
                       <mat-option [value]="2">Percent</mat-option>

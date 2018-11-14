@@ -3,6 +3,7 @@ import { BaseService } from './base.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Tariff } from 'src/app/models/response/tariff.model';
+import { Id } from 'src/app/models/response/id-response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,14 +26,15 @@ export class TariffService extends BaseService {
     }
   }
 
-  public async add(reqObj: Tariff, errorCallback: (msg: string) => void): Promise<boolean> {
+  public async add(reqObj: Tariff, errorCallback: (msg: string) => void): Promise<Id> {
     let resp = await this.post('/tariff/add', reqObj);
     if (this.isSuccess(resp)) {
-      return true;
+      let data = (<Id>resp.data);
+      return data;
     }
     else {
       errorCallback(resp.message);
-      return false;
+      return null;
     }
   }
 

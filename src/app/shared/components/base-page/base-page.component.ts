@@ -20,7 +20,6 @@ export abstract class BasePageComponent {
   }
 
   protected onResponseError(msg: string) {
-    debugger;
     this.snackbar.open(msg, null, { duration: 5000 });
     this.loader.hide();
   }

@@ -70,11 +70,11 @@ export class TariffsComponent extends BasePageComponent implements OnInit {
 
   async onDelete(id: number) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent);
-    dialogRef.afterClosed().subscribe(status => {
+    await dialogRef.afterClosed().subscribe(async (status) => {
       if (status) {
         this.loader.show();
-        let result = this.tariffService.remove(id, this.onResponseError.bind(this));
-        if(result) {
+        let result = await this.tariffService.remove(id, this.onResponseError.bind(this));
+        if (result == true) {
           const index = this.tariffs.findIndex(x => x.id == id);
           this.tariffs.splice(index, 1);
           this.snackbar.open('Tariff deleted successfully!', null, { duration: 2000 });
@@ -86,8 +86,10 @@ export class TariffsComponent extends BasePageComponent implements OnInit {
 
   async onSave() {
     this.loader.show();
-    var result = await this.tariffService.add(this.tariff, this.onResponseError.bind(this));
+    let result = await this.tariffService.add(this.tariff, this.onResponseError.bind(this));
     if (result) {
+      this.tariff.id = result.id;
+      this.tariffs.push(this.tariff);
       this.snackbar.open('Tariff saved successfully!', null, { duration: 2000 });
     }
     this.loader.hide();
