@@ -1,3 +1,4 @@
+<app-loader #appLoader></app-loader>
 <div class="container-fluid fill-parent">
   <div class="row fill-parent">
     <div class="col-sm-10 col-md-6 col-lg-6 col-xl-6">
@@ -8,7 +9,7 @@
             <mat-card-title *ngIf="tariff.id > 0">UPDATE TARIFF</mat-card-title>
           </div>
           <div class="col">
-            <button mat-icon-button class="pull-right" (click)="newTariff()">
+            <button mat-icon-button class="pull-right" (click)="onNewTariff()">
               <mat-icon>close</mat-icon>
             </button>
           </div>
@@ -40,7 +41,7 @@
                       <mat-option [value]="2">Percent</mat-option>
                     </mat-select>
                   </mat-form-field>
-                  <button *ngIf="tariff.fixedTariffs.length !== 1" mat-button (click)="removeTariff(tabTariffs._selectedIndex, i)"
+                  <button *ngIf="tariff.fixedTariffs.length !== 1" mat-button (click)="onRemoveTariff(tabTariffs._selectedIndex, i)"
                     class="pull-right">Remove</button>
                 </div>
               </mat-tab>
@@ -65,7 +66,7 @@
                       <mat-option [value]="2">Percent</mat-option>
                     </mat-select>
                   </mat-form-field>
-                  <button *ngIf="tariff.rangedTariffs.length !== 1" mat-button (click)="removeTariff(tabTariffs._selectedIndex, i)"
+                  <button *ngIf="tariff.rangedTariffs.length !== 1" mat-button (click)="onRemoveTariff(tabTariffs._selectedIndex, i)"
                     class="pull-right">Remove</button>
                 </div>
               </mat-tab>
@@ -73,9 +74,9 @@
           </form>
         </mat-card-content>
         <mat-card-actions class="two-button">
-          <button mat-flat-button color="primary" (click)="addNewTariff(tabTariffs._selectedIndex)">ADD NEW</button>
-          <button *ngIf="tariff.id === null" mat-flat-button color="primary" class="pull-right">SAVE</button>
-          <button *ngIf="tariff.id !== null" mat-flat-button color="primary" class="pull-right">UPDATE</button>
+          <button mat-flat-button color="primary" (click)="onAddTariff(tabTariffs._selectedIndex)">ADD NEW</button>
+          <button *ngIf="tariff.id === null" mat-flat-button color="primary" class="pull-right" (click)="onSave()">SAVE</button>
+          <button *ngIf="tariff.id !== null" mat-flat-button color="primary" class="pull-right" (click)="onUpdate()">UPDATE</button>
         </mat-card-actions>
       </mat-card>
     </div>
@@ -92,8 +93,8 @@
                   <mat-card-subtitle>Total fixed: {{ tariff.fixedTariffs.length }}</mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-actions class="two-button">
-                  <button mat-flat-button color="primary" (click)="editTariff(tariff.id)">EDIT</button>
-                  <button mat-flat-button color="primary" (click)="deleteTariff(tariff.id)" class="pull-right">DELETE</button>
+                  <button mat-flat-button color="primary" (click)="onEdit(tariff.id)">EDIT</button>
+                  <button mat-flat-button color="primary" (click)="onDelete(tariff.id)" class="pull-right">DELETE</button>
                 </mat-card-actions>
               </mat-card>
             </div>

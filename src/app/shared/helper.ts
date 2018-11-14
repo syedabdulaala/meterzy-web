@@ -17,4 +17,13 @@ export class Helper {
     let token = localStorage.getItem('usr');
     return (token !== null && token !== undefined && token !== '');
   }
+
+  public static getBearerToken() {
+    let token = localStorage.getItem('usr');
+    return token;
+  }
+
+  public static clearStorage() {
+    localStorage.removeItem('usr');
+  }
 }

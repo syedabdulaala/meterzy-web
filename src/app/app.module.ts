@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Routes } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
 import { MatNativeDateModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
@@ -25,6 +25,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
 import { AuthGuard } from './core/guard/auth.guard';
+import { BearerAuthInterceptor } from './core/interceptors/header.interceptor';
 
 import { AppComponent } from './app.component';
 import { MainLayoutComponent } from './shared/layout/main-layout/main-layout.component';
@@ -105,7 +106,10 @@ const routes: Routes = [
     LoaderComponent,
   ],
   bootstrap: [AppComponent],
-  providers: [AuthGuard],
+  providers: [
+    AuthGuard, 
+    { provide: HTTP_INTERCEPTORS, useClass: BearerAuthInterceptor, multi: true }
+  ],
   entryComponents: [ConfirmDialogComponent]
 })
 export class AppModule { }
