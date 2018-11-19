@@ -91,6 +91,7 @@ export class TariffsComponent extends BasePageComponent implements OnInit {
       this.tariff.id = result.id;
       this.tariffs.push(this.tariff);
       this.snackbar.open('Tariff saved successfully!', null, { duration: 2000 });
+      this.onNewTariff();
     }
     this.loader.hide();
   }

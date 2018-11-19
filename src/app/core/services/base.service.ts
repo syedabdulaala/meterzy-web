@@ -10,7 +10,6 @@ import { Helper } from 'src/app/shared/helper';
 export abstract class BaseService {
   private http: HttpClient;
   private router: Router;
-  private headers: HttpHeaders;
 
   constructor(http: HttpClient, router: Router) {
     this.http = http;
@@ -20,7 +19,7 @@ export abstract class BaseService {
   protected async get(url: string, params?: HttpParams, loaderId?: number) {
     try {
       url = environment.baseApiUrl + url;
-      const resp = await this.http.get<BaseResponse>(url, { params: params, headers: this.headers, observe: 'response' }).toPromise()
+      const resp = await this.http.get<BaseResponse>(url, { params: params, observe: 'response' }).toPromise()
       resp.body.statusCode = resp.status;
       return resp.body;
     } catch (error) {
@@ -31,7 +30,7 @@ export abstract class BaseService {
   protected async post(url: string, body?: object): Promise<BaseResponse> {
     try {
       url = environment.baseApiUrl + url;
-      const resp = await this.http.post<BaseResponse>(url, body, { headers: this.headers, observe: 'response' }).toPromise()
+      const resp = await this.http.post<BaseResponse>(url, body, { observe: 'response' }).toPromise();
       resp.body.statusCode = resp.status;
       return resp.body;
     } catch (error) {
@@ -53,7 +52,7 @@ export abstract class BaseService {
   protected async delete(url: string, params?: HttpParams) {
     try {
       url = environment.baseApiUrl + url;
-      const resp = await this.http.delete<BaseResponse>(url, { params: params, headers: this.headers, observe: 'response' }).toPromise();
+      const resp = await this.http.delete<BaseResponse>(url, { params: params, observe: 'response' }).toPromise();
       resp.body.statusCode = resp.status;
       return resp.body;
     } catch (error) {

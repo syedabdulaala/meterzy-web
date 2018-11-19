@@ -50,8 +50,7 @@ export class TariffService extends BaseService {
   }
 
   public async remove(id: number, errorCallback: (msg: string) => void): Promise<boolean> {
-    const params: HttpParams = new HttpParams();
-    params.set('id', id.toString());
+    const params: HttpParams = new HttpParams().set('id', id.toString());
     let resp = await this.delete('/tariff/delete', params);
     if (this.isSuccess(resp)) {
       return true;
